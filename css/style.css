@@ -1,0 +1,355 @@
+/* Seu CSS aprimorado */
+
+/* Estilos Globais e Core */
+body {
+    margin: 0;
+    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+    color: #f0f0f0;
+    background: linear-gradient(135deg, #2b0149 20%, #6a02b4 0%, #8a2be2 100%);
+    background-size: cover;
+    background-attachment: fixed; /* Efeito de parallax */
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    padding-top: 80px;
+    box-sizing: border-box;
+}
+
+/* Melhorias na Navbar */
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(138, 43, 226, 0.2); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito de desfoque */
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Adiciona sombra ao rolar a página para destacar a navbar */
+.navbar-scrolled {
+    background-color: rgba(138, 43, 226, 0.8);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand img {
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+}
+
+.nav-link {
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #b90aee;
+}
+
+.fa-github {
+    font-size: 1.5rem;
+    color: #bd4ee9;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fa-github:hover {
+    color: #ee0bee;
+    transform: scale(1.2);
+}
+
+.hvr-float-shadow {
+    background: linear-gradient(45deg, #8a2be2, #c300ff);
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* Borda mais arredondada */
+    padding: 10px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+    transition: all 0.3s ease;
+}
+
+.hvr-grow-shadow{
+    background: linear-gradient(45deg, #8a2be2, #c300ff);
+    color: #fff;
+    border: none;
+    border-radius: 50px; /* Borda mais arredondada */
+    padding: 10px 24px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+}
+/* Estilização para a seção "Eu" (Hero) */
+.eu {
+    text-align: center;
+    padding: 60px 20px;
+    animation: fadeIn 1s ease-in-out; /* Animação de entrada */
+}
+
+.eu h2 {
+    font-size: 3rem;
+    color: #f0f0f0;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.eu h1 {
+    font-size: 6rem;
+    font-weight: 800;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    background-image: linear-gradient(135deg, #c300ff 0%, #7d0cda 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.eu p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 5px 0;
+}
+
+.eu img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #8a2be2;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.eu img:hover {
+    transform: scale(1.05) rotate(5deg);
+}
+
+/* Estilização para a seção "Skills" */
+.skills {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.skills p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.skills span {
+    color: #b90aee;
+    font-weight: 700;
+}
+
+.skills img {
+    max-width: 90%;
+    height: auto;
+}
+
+/* Estilização para a seção de Projetos */
+.projects {
+    padding: 60px 20px;
+}
+
+.projects h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo semi-transparente para o card */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.img-project {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-body {
+    padding: 2rem;
+    text-align: left;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Footer */
+footer {
+    background-color: #1a0026;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact {
+    padding: 60px 20px;
+}
+
+.contact h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border-radius: 8px;
+    padding: 12px 18px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #8a2be2;
+    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+    color: #fff;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.contact .social-links a {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 15px;
+    background: none;
+    border: 2px solid transparent;
+    padding: 12px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.contact .social-links a:hover {
+    color: #8a2be2;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Estilização para a nova seção de Habilidades Detalhada */
+.skills-detailed {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.skills-detailed h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.skill-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    padding: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card .card-title {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.skill-card ul {
+    padding-left: 0;
+}
+
+.skill-card li {
+    font-size: 1rem;
+    line-height: 2;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+
+/* Animações Keyframes */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+    .eu h1 {
+        font-size: 4rem;
+    }
+    .eu h2 {
+        font-size: 2.5rem;
+    }
+    .skills p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .eu h1 {
+        font-size: 2.5rem;
+    }
+    .eu h2 {
+        font-size: 2rem;
+    }
+    .projects h2 {
+        font-size: 2rem;
+    }
+    .card-body {
+        padding: 1.5rem;
+    }
+}
