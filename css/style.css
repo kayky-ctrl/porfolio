@@ -207,65 +207,162 @@ body {
 
 /* Footer */
 footer {
+    display: flex;
     background-color: #1a0026;
+    align-items: center;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    justify-content: center;
+    text-align: center;
 }
+
+/* =============================================== */
+/* --- SEÇÃO DE CONTATO - ESTILO APRIMORADO --- */
+/* =============================================== */
 
 .contact {
-    padding: 60px 20px;
+    padding: 80px 20px;
+    position: relative;
 }
 
+/* --- Título com Detalhe de Gradiente --- */
 .contact h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
+    font-size: 2.8rem; /* Um pouco maior */
+    font-weight: 800;
+    margin-bottom: 20px;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
+    position: relative;
+    display: inline-block; /* Para o pseudo-elemento funcionar corretamente */
 }
 
-.contact p {
-    font-size: 1.2rem;
+/* Linha de gradiente animada abaixo do título */
+.contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #8a2be2, #c300ff);
+    transition: width 0.3s ease-in-out;
+}
+
+.contact .container:hover h2::after {
+    width: 120px; /* Efeito sutil de hover na seção */
+}
+
+.contact p.fs-5 {
     max-width: 700px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
 }
 
+
+/* --- Card do Formulário Aprimorado --- */
+.contact .card {
+    background-color: rgba(0, 0, 0, 0.2); /* Um pouco mais escuro para melhor contraste */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px); /* Desfoque mais intenso */
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Inputs e Textarea com Mais Estilo --- */
 .form-control {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
     border-radius: 8px;
-    padding: 12px 18px;
+    padding: 14px 20px;
     transition: all 0.3s ease;
+    font-size: 1rem;
 }
 
 .form-control:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: #8a2be2;
-    box-shadow: 0 0 0 0.25rem rgba(138, 43, 226, 0.25);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: #c300ff; /* Cor de destaque mais forte */
+    box-shadow: 0 0 15px rgba(195, 0, 255, 0.3);
     color: #fff;
 }
 
 .form-control::placeholder {
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.4);
 }
 
-.contact .social-links a {
-    font-size: 2rem;
+
+/* --- Coluna de Informações de Contato (Novo Visual) --- */
+.contact-info-block {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 2.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-info-block h4 {
+    font-weight: 600;
     color: #fff;
-    margin: 0 15px;
-    background: none;
-    border: 2px solid transparent;
-    padding: 12px;
-    border-radius: 50px;
-    transition: all 0.3s ease;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.contact .social-links a:hover {
-    color: #8a2be2;
+/* --- Lista de Contatos Interativa --- */
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-list li {
+    margin-bottom: 1rem;
+}
+
+.contact-list a {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-list a:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
+    color: #fff;
+}
+
+.contact-list i {
+    font-size: 1.5rem;
+    min-width: 40px; /* Alinha o texto verticalmente */
+    text-align: center;
+    margin-right: 15px;
+    color: #c300ff; /* Cor de destaque nos ícones */
+}
+
+/* --- Botão com Hover Melhorado --- */
+.hvr-float-shadow {
+    padding: 12px 30px; /* Um pouco maior */
+    font-size: 1rem;
+    font-weight: 700;
+}
+.hvr-float-shadow:hover {
+    transform: translateY(-3px) scale(1.03); /* Efeito de elevação mais notável */
+    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6); /* Sombra mais forte no hover */
+    filter: brightness(1.1); /* Deixa o gradiente mais vivo */
 }
 
 /* Estilização para a nova seção de Habilidades Detalhada */
