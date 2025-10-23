@@ -1,452 +1,546 @@
-/* Seu CSS aprimorado */
+/* =============================================== */
+/* --- PALETA DE CORES E ESTILOS GLOBAIS --- */
+/* =============================================== */
+:root {
+  --bg-dark: #0f172a;       /* Azul Slate Escuro (Fundo Principal) */
+  --bg-medium: #1e293b;    /* Azul Slate Médio (Fundo Footer) */
+  --bg-glass: rgba(30, 41, 59, 0.5); /* Fundo dos Cards (Glassmorphism) */
+  --border-glass: rgba(51, 65, 85, 0.5); /* Borda dos Cards */
+  --primary: #00c6c6;      /* Ciano/Teal (Destaque Principal) */
+  --primary-hover: #00ffff; /* Ciano/Teal Mais Claro (Hover) */
+  --text-light: #e2e8f0;    /* Cinza-Azulado Claro (Texto Principal) */
+  --text-medium: #94a3b8;   /* Cinza-Azulado Médio (Texto Secundário) */
+  --text-dark: #0f172a;       /* Azul Escuro (Para texto em botões claros) */
+}
 
-/* Estilos Globais e Core */
 body {
-    margin: 0;
-    font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
-    color: #f0f0f0;
-    background: linear-gradient(135deg, #2b0149 20%, #6a02b4 0%, #8a2be2 100%);
-    background-size: cover;
-    background-attachment: fixed; /* Efeito de parallax */
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-    padding-top: 80px;
-    box-sizing: border-box;
+  margin: 0;
+  font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-light);
+  /* Gradiente mais sutil com as novas cores */
+  background: linear-gradient(135deg, var(--bg-dark) 0%, #1a2a45 100%);
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  padding-top: 80px; /* Ajuste para a navbar fixa */
+  box-sizing: border-box;
 }
 
-/* Melhorias na Navbar */
+/* =============================================== */
+/* --- NAVBAR --- */
+/* =============================================== */
 .navbar {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    background-color: rgba(138, 43, 226, 0.2); /* Fundo semi-transparente */
-    backdrop-filter: blur(10px); /* Efeito de desfoque */
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  background-color: rgba(15, 23, 42, 0.2); /* --bg-dark com transparência */
+  backdrop-filter: blur(10px);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  border-bottom: 1px solid var(--border-glass);
 }
 
-/* Adiciona sombra ao rolar a página para destacar a navbar */
 .navbar-scrolled {
-    background-color: rgba(138, 43, 226, 0.8);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: rgba(15, 23, 42, 0.85);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-brand img {
-    height: 40px;
-    transition: transform 0.3s ease;
+  height: 40px;
+  transition: transform 0.3s ease;
 }
 
 .navbar-brand:hover img {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
-.nav-link {
-    color: #fff;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: color 0.3s ease, transform 0.3s ease;
+.navbar-nav .nav-link {
+  color: #FFFFFF; 
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 0.5rem 1rem;
 }
 
-.nav-link:hover, .nav-link.active {
-    color: #b90aee;
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--primary) !important;
 }
 
-.fa-github {
-    font-size: 1.5rem;
-    color: #bd4ee9;
-    transition: color 0.3s ease, transform 0.3s ease;
+.navbar-brand img {
+  height: 40px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0) invert(1); 
 }
 
-.fa-github:hover {
-    color: #ee0bee;
-    transform: scale(1.2);
+.navbar-brand:hover img {
+  transform: scale(1.1);
+  filter: invert(50%) sepia(100%) saturate(1000%) hue-rotate(180deg) brightness(100%) contrast(100%);
 }
 
-.hvr-float-shadow {
-    background: linear-gradient(45deg, #8a2be2, #c300ff);
-    color: #fff;
-    border: none;
-    border-radius: 50px; /* Borda mais arredondada */
-    padding: 10px 24px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
-    transition: all 0.3s ease;
+.navbar-brand .logo-svg {
+  height: 40px; /* Mantém o tamanho */
+  width: auto; /* Mantém a proporção */
+  fill: #ffffff; /* Sua cor branca desejada */
+  transition: fill 0.3s ease, transform 0.3s ease;
 }
 
-.hvr-grow-shadow{
-    background: linear-gradient(45deg, #8a2be2, #c300ff);
-    color: #fff;
-    border: none;
-    border-radius: 50px; /* Borda mais arredondada */
-    padding: 10px 24px;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
+.navbar-brand:hover .logo-svg {
+  transform: scale(1.1);
+  fill: var(--primary); /* Cor ciano no hover */
 }
-/* Estilização para a seção "Eu" (Hero) */
+
+/* Estilo específico para o ícone do GitHub na nav */
+.nav-link.nav-icon {
+  padding: 0.5rem; /* Ajuste de padding para ícone */
+}
+.nav-link.nav-icon .fa-github {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-link.nav-icon:hover .fa-github {
+  color: var(--primary);
+  transform: scale(1.1); /* Efeito de hover no ícone */
+}
+
+/* Ajuste do Toggler do Bootstrap para tema escuro */
+.navbar-toggler {
+  border-color: var(--border-glass);
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2300c6c6' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/* =============================================== */
+/* --- BOTÕES E LINKS --- */
+/* =============================================== */
+
+/* Botão de Destaque Principal (Contato, Enviar) */
+.btn-custom {
+  background: linear-gradient(45deg, var(--primary), var(--primary-hover));
+  color: var(--text-dark); /* Texto escuro para legibilidade */
+  border: none;
+  border-radius: 50px;
+  padding: 10px 24px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(0, 198, 198, 0.2);
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-custom:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 25px rgba(0, 198, 198, 0.4);
+  filter: brightness(1.1);
+  color: var(--text-dark);
+}
+
+/* Link "Ver Projeto" nos cards */
+.btn-project {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.btn-project:hover {
+  color: var(--primary-hover);
+}
+
+/* =============================================== */
+/* --- SEÇÃO "SOBRE" (HERO) --- */
+/* =============================================== */
 .eu {
-    text-align: center;
-    padding: 60px 20px;
-    animation: fadeIn 1s ease-in-out; /* Animação de entrada */
+  text-align: center;
+  padding: 60px 20px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 .eu h2 {
-    font-size: 3rem;
-    color: #f0f0f0;
-    font-weight: 600;
-    margin-bottom: 10px;
+  font-size: 3rem;
+  color: var(--text-light);
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .eu h1 {
-    font-size: 6rem;
-    font-weight: 800;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    background-image: linear-gradient(135deg, #ff02ff 0%, #2a014d 70%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+  font-size: clamp(2.5rem, 10vw, 6rem); /* Responsivo */
+  font-weight: 800;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  /* Novo gradiente para o título */
+  background-image: linear-gradient(135deg, var(--primary-hover) 0%, var(--text-light) 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-.eu p{
-    font-size: 1.2rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 5px 0;
+.eu p {
+  font-size: 1.2rem;
+  color: var(--text-medium);
+  margin: 5px 0;
+}
+
+.eu p.text-muted { /* Alvo específico para o subtítulo */
+   color: var(--text-medium) !important;
 }
 
 .eu img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #8a2be2;
-    box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
-    transition: transform 0.3s ease;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--primary);
+  box-shadow: 0 0 20px rgba(0, 198, 198, 0.3);
+  transition: transform 0.3s ease;
 }
 
 .eu img:hover {
-    transform: scale(1.05) rotate(5deg);
-}
-
-/* Estilização para a seção "Skills" */
-.skills {
-    text-align: center;
-    padding: 60px 20px;
-}
-
-.skills p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto 30px;
-    line-height: 1.6;
-}
-
-.skills span {
-    color: #b90aee;
-    font-weight: 700;
-}
-
-.skills img {
-    max-width: 90%;
-    height: auto;
-}
-
-/* Estilização para a seção de Projetos */
-.projects {
-    padding: 60px 20px;
-}
-
-.projects h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.card {
-    background-color: rgba(255, 255, 255, 0.05); /* Fundo semi-transparente para o card */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-}
-
-.img-project {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-}
-
-.card-body {
-    padding: 2rem;
-    text-align: left;
-}
-
-.card-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #fff;
-}
-
-.card-text {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Footer */
-footer {
-    display: flex;
-    background-color: #1a0026;
-    align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    justify-content: center;
-    text-align: center;
+  transform: scale(1.05) rotate(5deg);
 }
 
 /* =============================================== */
-/* --- SEÇÃO DE CONTATO - ESTILO APRIMORADO --- */
+/* --- SEÇÃO "HABILIDADES" --- */
 /* =============================================== */
-
-.contact {
-    padding: 80px 20px;
-    position: relative;
-}
-
-/* --- Título com Detalhe de Gradiente --- */
-.contact h2 {
-    font-size: 2.8rem; /* Um pouco maior */
-    font-weight: 800;
-    margin-bottom: 20px;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    position: relative;
-    display: inline-block; /* Para o pseudo-elemento funcionar corretamente */
-}
-
-/* Linha de gradiente animada abaixo do título */
-.contact h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #8a2be2, #c300ff);
-    transition: width 0.3s ease-in-out;
-}
-
-.contact .container:hover h2::after {
-    width: 120px; /* Efeito sutil de hover na seção */
-}
-
-.contact p.fs-5 {
-    max-width: 700px;
-    color: rgba(255, 255, 255, 0.7);
-}
-
-
-/* --- Card do Formulário Aprimorado --- */
-.contact .card {
-    background-color: rgba(0, 0, 0, 0.2); /* Um pouco mais escuro para melhor contraste */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px); /* Desfoque mais intenso */
-    border-radius: 15px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.contact .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* --- Inputs e Textarea com Mais Estilo --- */
-.form-control {
-    background-color: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border-radius: 8px;
-    padding: 14px 20px;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-}
-
-.form-control:focus {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-color: #c300ff; /* Cor de destaque mais forte */
-    box-shadow: 0 0 15px rgba(195, 0, 255, 0.3);
-    color: #fff;
-}
-
-.form-control::placeholder {
-    color: rgba(255, 255, 255, 0.4);
-}
-
-
-/* --- Coluna de Informações de Contato (Novo Visual) --- */
-.contact-info-block {
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    border-radius: 15px;
-    padding: 2.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.contact-info-block h4 {
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* --- Lista de Contatos Interativa --- */
-.contact-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.contact-list li {
-    margin-bottom: 1rem;
-}
-
-.contact-list a {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    border-radius: 8px;
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.contact-list a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-}
-
-.contact-list i {
-    font-size: 1.5rem;
-    min-width: 40px; /* Alinha o texto verticalmente */
-    text-align: center;
-    margin-right: 15px;
-    color: #c300ff; /* Cor de destaque nos ícones */
-}
-
-/* --- Botão com Hover Melhorado --- */
-.hvr-float-shadow {
-    padding: 12px 30px; /* Um pouco maior */
-    font-size: 1rem;
-    font-weight: 700;
-}
-.hvr-float-shadow:hover {
-    transform: translateY(-3px) scale(1.03); /* Efeito de elevação mais notável */
-    box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6); /* Sombra mais forte no hover */
-    filter: brightness(1.1); /* Deixa o gradiente mais vivo */
-}
-
-/* Estilização para a nova seção de Habilidades Detalhada */
 .skills-detailed {
-    padding: 60px 20px;
-    text-align: center;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 .skills-detailed h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .skill-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border-radius: 15px;
-    padding: 2rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.skill-card i {
+  color: var(--primary); /* Nova cor do ícone */
 }
 
 .skill-card .card-title {
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 1rem;
+  font-weight: 600;
+  color: rgb(51, 51, 51); /* Cor do título corrigida */
+  margin-bottom: 1rem;
 }
 
 .skill-card ul {
-    padding-left: 0;
+  padding-left: 0;
+  text-align: center;
 }
 
 .skill-card li {
-    font-size: 1rem;
-    line-height: 2;
-    color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--text-medium); /* Cor do texto corrigida */
 }
 
+/* =============================================== */
+/* --- SEÇÃO "PROJETOS" --- */
+/* =============================================== */
+.projects {
+  padding: 60px 20px;
+}
 
+.projects h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
 
-/* Animações Keyframes */
+/* Estilo de Card genérico (serve para projetos e contato) */
+.card {
+  background-color: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.img-project {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-body {
+  padding: 2rem;
+  text-align: left;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+.card-text {
+  font-size: 1rem;
+  color: var(--text-medium);
+}
+
+/* =============================================== */
+/* --- SEÇÃO "CONTATO" --- */
+/* =============================================== */
+.contact {
+  padding: 80px 20px;
+  position: relative;
+}
+
+.contact h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+}
+
+/* Linha de gradiente animada */
+.contact h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-hover));
+  transition: width 0.3s ease-in-out;
+}
+
+.contact .container:hover h2::after {
+  width: 120px;
+}
+
+.contact p.fs-5 {
+  max-width: 700px;
+  color: var(--text-medium);
+}
+
+/* Card do Formulário */
+.contact .card {
+  background-color: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Inputs e Textarea */
+.form-control {
+  background-color: rgba(15, 23, 42, 0.4); /* Fundo do input */
+  border: 1px solid var(--border-glass);
+  color: var(--text-light);
+  border-radius: 8px;
+  padding: 14px 20px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-control:focus {
+  background-color: rgba(15, 23, 42, 0.6);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(0, 198, 198, 0.2);
+  color: var(--text-light);
+}
+
+.form-control::placeholder {
+  color: var(--text-medium);
+}
+
+/* Bloco de Informações de Contato */
+.contact-info-block {
+  background-color: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(12px);
+  border-radius: 15px;
+  padding: 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info-block h4 {
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin-bottom: 1rem;
+}
+
+.contact-list a {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: var(--text-medium);
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-list a:hover {
+  background-color: rgba(30, 41, 59, 0.8);
+  color: var(--text-light);
+}
+
+.contact-list i {
+  font-size: 1.5rem;
+  min-width: 40px;
+  text-align: center;
+  margin-right: 15px;
+  color: var(--primary); /* Cor de destaque nos ícones */
+}
+
+/* =============================================== */
+/* --- FOOTER --- */
+/* =============================================== */
+footer {
+  background-color: var(--bg-medium);
+  align-items: center;
+  border-top: 1px solid var(--border-glass);
+  justify-content: center;
+  text-align: center;
+  color: var(--text-medium);
+}
+
+/* =============================================== */
+/* --- ANIMAÇÕES (HOVER.CSS) --- */
+/* =============================================== */
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow, transform;
+  transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover,
+.hvr-grow-shadow:focus,
+.hvr-grow-shadow:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.05); /* Reduzido para ser mais sutil */
+  transform: scale(1.05);
+}
+
+/* Underline From Center */
+.hvr-underline-from-center {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+.hvr-underline-from-center:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 51%;
+  right: 51%;
+  bottom: 0;
+  background: var(--primary); /* Nova cor */
+  height: 3px; /* Um pouco mais sutil */
+  -webkit-transition-property: left, right;
+  transition-property: left, right;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.hvr-underline-from-center:hover:before,
+.hvr-underline-from-center:focus:before,
+.hvr-underline-from-center:active:before {
+  left: 0;
+  right: 0;
+}
+
+/* Animação de Fade-in (Usada no Hero) */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Responsividade */
+/* =============================================== */
+/* --- RESPONSIVIDADE --- */
+/* =============================================== */
 @media (max-width: 992px) {
-    .eu h1 {
-        font-size: 4rem;
-    }
-    .eu h2 {
-        font-size: 2.5rem;
-    }
-    .skills p {
-        font-size: 1rem;
-    }
+  .eu h1 {
+    font-size: 4rem;
+  }
+  .eu h2 {
+    font-size: 2.5rem;
+  }
 }
 
 @media (max-width: 768px) {
-    .eu h1 {
-        font-size: 2.5rem;
-    }
-    .eu h2 {
-        font-size: 2rem;
-    }
-    .projects h2 {
-        font-size: 2rem;
-    }
-    .card-body {
-        padding: 1.5rem;
-    }
+  .eu h1 {
+    font-size: 2.8rem;
+  }
+  .eu h2 {
+    font-size: 2rem;
+  }
+  .projects h2 {
+    font-size: 2rem;
+  }
+  .contact h2 {
+    font-size: 2.2rem;
+  }
+  .card-body {
+    padding: 1.5rem;
+  }
 }
